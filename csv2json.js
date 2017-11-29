@@ -33,21 +33,31 @@ const csv = require('csvtojson')
 // 	finalJson += JSON.stringify(jsonobj) 
 
 // }).on('end',()=>{fs.writeFileSync(outputPath,finalJson)})
+/* This is working code*/
+// csv().
+// fromFile(csvpath).
+// on('json',(jsonobj)=>{
+// 	// console.log(jsonobj)
+// 	//fs.writeFileSync(outputPath, JSON.stringify(jsonobj))
+// 	finalJson = finalJson + JSON.stringify(jsonobj) + ","
+
+// }).on('end',()=>{
+// 	finalJson1 = finalJson.substr(0,finalJson.length-1) + "]"
+// 	fs.writeFileSync(outputPath,finalJson1)
+
+// })
+/*Working code ends*/
 
 csv().
 fromFile(csvpath).
-on('json',(jsonobj)=>{
+on('end_parsed',(jsonobj)=>{
 	// console.log(jsonobj)
 	//fs.writeFileSync(outputPath, JSON.stringify(jsonobj))
-	finalJson = finalJson + JSON.stringify(jsonobj) + ","
+	fs.writeFileSync(outputPath,JSON.stringify(jsonobj,null,2))
+	//finalJson = finalJson + JSON.stringify(jsonobj)
 
 }).on('end',()=>{
-	finalJson1 = finalJson.substr(0,finalJson.length-1) + "]"
-	fs.writeFileSync(outputPath,finalJson1)
+	//finalJson1 = finalJson.substr(0,finalJson.length-1) + "]"
+	console.log("Complete")
 
 })
-
-
-
-
-
