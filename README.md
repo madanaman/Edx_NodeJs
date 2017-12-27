@@ -1,2 +1,2 @@
 # Edx_NodeJs
-Contains node js assignments of EDX 
+Contains node js codes for various applications
